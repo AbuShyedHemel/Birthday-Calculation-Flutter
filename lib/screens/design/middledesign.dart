@@ -27,7 +27,6 @@ class _MidleState extends State<Midle> {
     "FRIDAY",
     "SATURDAY",
     "SUNDAY"
-    "All Day"
   ];
 
 
