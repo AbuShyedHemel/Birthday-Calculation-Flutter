@@ -19,7 +19,6 @@ class AgeCalculation{
     DateTime temp = DateTime(today.year,birthday.month,birthday.day);
     DateTime nextBirthdayData = temp.isBefore(today)?Age.
     add(date: temp, duration: AgeDuration(years: 1)):temp;
-
     return nextBirthdayData.weekday;
   }
 }

@@ -1,20 +1,8 @@
-import 'package:age/age.dart';
-import 'package:age_calculator/services/agecalculation.dart';
 import 'package:flutter/material.dart';
 
 class ProviderHelper with ChangeNotifier{
   DateTime todayDate = DateTime.now();
-  DateTime dob = DateTime(2020, 9, 11);
-
-  AgeDuration  ageDuration;
-  AgeDuration nextBirthday;
-  int nextbdayWeekDay;
-
-   Future<Null> futuretime(){
-    ageDuration =  AgeCalculation().calculateAge(todayDate, dob);
-    nextBirthday = AgeCalculation().nextBirthday(todayDate, dob);
-    nextbdayWeekDay = AgeCalculation().nextBirthdayWeekDay(todayDate, dob);
-  }
+  DateTime dob = DateTime(1996, 06, 09);
   
   //TextEditingController dobcontroller = AgeCalculation().dobcontroller;
   Future<Null> selectTodayDate(BuildContext context) async{
