@@ -29,19 +29,21 @@ class _MidleState extends State<Midle> {
     "SUNDAY"
   ];
 
-
-    @override
-  void initState() {
-    super.initState();
+  void dateCalculate(){
+    setState(() {
     final providerHelp = Provider.of<ProviderHelper>(context, listen: false);
     _ageDuration = AgeCalculation().calculateAge(providerHelp.todayDate, providerHelp.dob);
     _nextBirthday = AgeCalculation().nextBirthday(providerHelp.todayDate, providerHelp.dob);
     _nextbdayWeekDay = AgeCalculation().nextBirthdayWeekDay(providerHelp.todayDate, providerHelp.dob);
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     final providerHelp = Provider.of<ProviderHelper>(context, listen: false);
-    //print("Date is : ${providerHelp.ageDuration.years}");
+        _ageDuration = AgeCalculation().calculateAge(providerHelp.todayDate, providerHelp.dob);
+    _nextBirthday = AgeCalculation().nextBirthday(providerHelp.todayDate, providerHelp.dob);
+    _nextbdayWeekDay = AgeCalculation().nextBirthdayWeekDay(providerHelp.todayDate, providerHelp.dob);
     return Container(
               margin: EdgeInsets.symmetric(
                 vertical: 40
@@ -87,7 +89,7 @@ class _MidleState extends State<Midle> {
                                 
                               ],
                             ),
-                            Text("${_ageDuration.months} month | ${_ageDuration.days} days",style: TextStyle
+                            Text("${_ageDuration.months == null ? "0" : _ageDuration.months} month | ${_ageDuration.days} days",style: TextStyle
                             (
                               color: Colors.white,
                               fontSize: 20,
@@ -217,9 +219,20 @@ class _MidleState extends State<Midle> {
                   ),
                   SizedBox(
                     height: 20,
-                  )
+                  ),
+                  MaterialButton(onPressed: (){
+                    dateCalculate();
+                  },
+            child: Container(
+              color: Colors.white,
+              height: 30,
+              width: 80,
+              child:Center(child: Text("Calculate",style: TextStyle(color: Colors.black),))
+            ),)
                 ],
               ),
+              
             );
+            
   }
 }
